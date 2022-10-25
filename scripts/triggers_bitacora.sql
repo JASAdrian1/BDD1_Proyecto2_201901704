@@ -23,3 +23,39 @@ BEGIN
 INSERT INTO historial(fecha,descripcion,tipo) VALUES (SYSDATE(),"Se ha registrado un nuevo docente","INSERT"); 
 END $$
 
+
+DELIMITER $$
+CREATE TRIGGER historial_habilitar_insert
+AFTER INSERT ON curso_habilitado 
+FOR EACH ROW 
+BEGIN  
+INSERT INTO historial(fecha,descripcion,tipo) VALUES (SYSDATE(),"Se ha habilitado un nuevo curso","INSERT"); 
+END $$
+
+
+DELIMITER $$
+CREATE TRIGGER historial_horario_insert
+AFTER INSERT ON horario 
+FOR EACH ROW 
+BEGIN  
+INSERT INTO historial(fecha,descripcion,tipo) VALUES (SYSDATE(),"Se ha agregado un nuevo horario","INSERT"); 
+END $$
+
+DELIMITER $$
+CREATE TRIGGER historial_asignacion_insert
+AFTER INSERT ON asignacion 
+FOR EACH ROW 
+BEGIN  
+INSERT INTO historial(fecha,descripcion,tipo) VALUES (SYSDATE(),"Se ha realizado una asignacion","INSERT"); 
+END $$
+
+
+DELIMITER $$
+CREATE TRIGGER historial_asignacion_update
+AFTER UPDATE ON asignacion 
+FOR EACH ROW 
+BEGIN  
+INSERT INTO historial(fecha,descripcion,tipo) VALUES (SYSDATE(),"Se ha realizado una desagsinacion","UPDATE"); 
+END $$
+
+

@@ -40,6 +40,7 @@ CREATE TABLE `proyecto2_bases`.`carrera` (
   `status` TINYINT NULL,
   `carnet` INT NULL,
   `id_curso_habilitado` INT NULL,
+  `nota` INT NULL,
   PRIMARY KEY (`id_asignacion`));
 
 

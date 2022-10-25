@@ -35,6 +35,40 @@ RETURN (correoValido);
 END $$
 
 
+DROP FUNCTION IF EXISTS validarCicloValido;
+DELIMITER $$
+CREATE FUNCTION validarCicloValido(
+	ciclo VARCHAR(2)
+)
+RETURNS BOOLEAN
+DETERMINISTIC
+BEGIN
+DECLARE nombreValido BOOLEAN;
+IF (ciclo ="1S" OR ciclo="2S" OR ciclo="VJ" OR ciclo="VD") THEN
+	SELECT TRUE INTO nombreValido;
+ELSE
+	SELECT FALSE INTO nombreValido;
+END IF;
+RETURN (nombreValido);
+END $$
+
+
+DROP FUNCTION IF EXISTS validarNumeroSemana;
+DELIMITER $$
+CREATE FUNCTION validarNumeroSemana(
+	numero INT
+)
+RETURNS BOOLEAN
+DETERMINISTIC
+BEGIN
+DECLARE numeroValido BOOLEAN;
+	SELECT TRUE INTO numeroValido;
+	IF(numero<0 OR numero>7) THEN
+		SELECT FALSE INTO numeroValido;
+	END IF;
+RETURN(numeroValido);
+END $$
+
 
 DROP FUNCTION IF EXISTS validarNumeroPositivo;
 DELIMITER $$

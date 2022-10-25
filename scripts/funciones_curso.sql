@@ -14,6 +14,7 @@ CREATE PROCEDURE crearCurso(
 DETERMINISTIC
 crear_curso:BEGIN
 	IF(validarCursoExiste(codigo_curso)) THEN
+		SELECT 'Error al crear curso. Ya existe un curso registrado con el codigo utilizado' AS ERROR;
 		LEAVE crear_curso;
 	END IF;
     
@@ -35,6 +36,7 @@ crear_curso:BEGIN
     
     INSERT INTO curso(`codigo_curso`,`nombre`,`creditos_necesarios`,`creditos_valor`,`obligatorio`,`id_carrera`)
     VALUES(codigo_curso,nombre,creditos_necesarios,creditos_valor,obligatorio,id_carrera);
+    SELECT 'Curso creado exitosamente' AS MENSAJE;
 END $$
 
 

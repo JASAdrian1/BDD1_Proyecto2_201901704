@@ -56,10 +56,3 @@ SELECT exists(SELECT 1
 				WHERE e.carnet = carnet) INTO existe;
 RETURN(existe);
 END $$
-
-
-
-
-
-
-
