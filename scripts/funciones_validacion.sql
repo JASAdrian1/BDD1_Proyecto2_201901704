@@ -87,4 +87,19 @@ RETURN(esPositivo);
 END $$
 
 
+DROP FUNCTION IF EXISTS validarNotaValida;
+DELIMITER $$
+CREATE FUNCTION validarNotaValida(
+	numero INT
+)
+RETURNS BOOLEAN
+DETERMINISTIC
+BEGIN
+DECLARE esPositivo BOOLEAN;
+	SELECT TRUE INTO esPositivo;
+	IF(numero<0 OR numero>100) THEN
+		SELECT FALSE INTO esPositivo;
+	END IF;
+RETURN(esPositivo);
+END $$
 

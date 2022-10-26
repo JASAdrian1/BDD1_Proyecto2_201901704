@@ -49,13 +49,21 @@ BEGIN
 INSERT INTO historial(fecha,descripcion,tipo) VALUES (SYSDATE(),"Se ha realizado una asignacion","INSERT"); 
 END $$
 
-
+DROP TRIGGER IF EXISTS historial_asignacion_update;
 DELIMITER $$
 CREATE TRIGGER historial_asignacion_update
 AFTER UPDATE ON asignacion 
 FOR EACH ROW 
 BEGIN  
-INSERT INTO historial(fecha,descripcion,tipo) VALUES (SYSDATE(),"Se ha realizado una desagsinacion","UPDATE"); 
+	IF NOT(NEW.status <=> OLD.status) THEN
+		INSERT INTO historial(fecha,descripcion,tipo) VALUES (SYSDATE(),"Se ha realizado una desagsinacion","UPDATE"); 
+	END IF;
+    IF NOT(NEW.nota <=> OLD.nota) THEN
+		INSERT INTO historial(fecha,descripcion,tipo) VALUES (SYSDATE(),"Se ha cargado una nueva nota","UPDATE"); 
+	END IF;
 END $$
+
+
+
 
 

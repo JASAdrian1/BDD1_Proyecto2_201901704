@@ -25,8 +25,8 @@ ingresar_nota:BEGIN
         LEAVE ingresar_nota;
 	END IF;	
 
-	IF(NOT validarNumeroPositivo(ROUND(nota))) THEN
-		SELECT "Error al ingresar nota. La nota debe ser un valor positivo." AS ERROR;
+	IF(NOT validarNotaValida(ROUND(nota))) THEN
+		SELECT "Error al ingresar nota. La nota debe ser un numero positivo y menor o igual a 100." AS ERROR;
         LEAVE ingresar_nota;
 	END IF;	
 
@@ -37,7 +37,7 @@ ingresar_nota:BEGIN
 
 	-- Se cambia actualiza la nota del estudiante en la tabla asignacion
     UPDATE asignacion a SET a.nota = nota WHERE a.carnet = carnet AND a.id_curso_habilitado = cod_habilitado;
-
+	SELECT "Nota ingresada exitosamente." AS MENSAJE;
 END $$
 
 

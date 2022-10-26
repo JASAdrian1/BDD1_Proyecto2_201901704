@@ -41,6 +41,7 @@ DECLARE cantidad_asignados INT;
 		-- Si se encuntra el registro de la asignacion en la tabla asignacion pero con el estatus 0, unicamente se actualiza el status
 		IF((SELECT a.status FROM asignacion a WHERE a.carnet = carnet AND a.id_curso_habilitado = cod_habilitado) = 0) THEN
 			UPDATE asignacion a SET a.status = 1 WHERE a.carnet = carnet AND a.id_curso_habilitado = cod_habilitado;
+            UPDATE asignacion a SET a.nota = -1 WHERE a.carnet = carnet AND a.id_curso_habilitado = cod_habilitado;
             SELECT "La asignacion ha sido exitosa" AS MENSAJE;
             LEAVE asignar_curso;
         END IF;

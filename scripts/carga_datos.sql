@@ -54,3 +54,15 @@ CALL asignarCurso(774,"1S","D",201804741);
 -- desasignarCurso(codigo_curso,ciclo,seccion,carnet)
 CALL desasignarCurso(774,"2S","C",201901704);
 CALL desasignarCurso(774,"1S","D",201804741);
+CALL desasignarCurso(774,"1S","D",201901704);
+
+
+-- ingresarNota(codigo_curso,ciclo,seccion,canet,nota)
+CALL ingresarNota(774,"2S","C",201901704,85);
+CALL ingresarNota(774,"2S","C",201804741,77);
+CALL ingresarNota(774,"1S","D",201901704,91);
+
+
+
+-- generarActa(codigo_curso,ciclo,seccion)
+CALL generarActa(774,"2S","C");
