@@ -24,6 +24,11 @@ generar_acta:BEGIN
 		SELECT "Error al generar el acta. No se ha ingresado la nota de todos los estudiantes asignados" AS ERROR;
         LEAVE generar_acta;
 	END IF;
+    
+    IF(SELECT EXISTS(SELECT 1 FROM acta a WHERE a.id_curso_habilitado = cod_habilitado)) THEN
+		SELECT "Error al generar el acta. Ya existe un acta del curso." AS ERROR;
+        LEAVE generar_acta;
+	END IF;
 	
     INSERT INTO acta(`codigo_curso`,`fecha_creacion`,`id_curso_habilitado`)
     VALUES(codigo_curso,SYSDATE(),cod_habilitado);
