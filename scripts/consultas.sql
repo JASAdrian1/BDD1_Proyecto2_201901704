@@ -1,6 +1,6 @@
 
 -- consultarPensum(codigo_carrera)
-CALL consultarPensum(1);
+CALL consultarPensum(3);
 
 -- consultarEstudiante(carnet)
 CALL consultarEstudiante(201901704);
